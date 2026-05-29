@@ -41,8 +41,8 @@ const SpeedSlider = memo(function SpeedSlider({
   }
 
   const buttonSx = {
-    width: 32,
-    height: 32,
+    width: { xs: 36, sm: 32 },
+    height: { xs: 36, sm: 32 },
     flexShrink: 0,
     borderRadius: '8px',
     border: '1px solid #22d3ee',
@@ -75,13 +75,23 @@ const SpeedSlider = memo(function SpeedSlider({
           background: 'rgba(15, 23, 42, 0.6)', // slate-900/60
           backdropFilter: 'blur(10px)',
           borderRadius: '16px', // rounded-2xl
-          padding: '24px',
+          padding: { xs: '16px', sm: '24px' },
           boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
           border: '1px solid rgba(255, 255, 255, 0.05)',
           width: '100%',
+          maxWidth: '100%',
+          overflow: 'hidden',
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: { xs: '8px', sm: '12px' },
+            width: '100%',
+            minWidth: 0,
+          }}
+        >
           <Box
             component="button"
             onClick={handleDecrease}
@@ -91,7 +101,7 @@ const SpeedSlider = memo(function SpeedSlider({
           >
             −
           </Box>
-          <Box sx={{ flex: 1 }}>
+          <Box sx={{ flex: 1, minWidth: 0, px: { xs: 0.5, sm: 0 } }}>
             <Slider
               value={value}
               onChange={handleChange}
